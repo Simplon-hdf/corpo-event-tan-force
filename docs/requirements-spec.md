@@ -5,9 +5,10 @@
 - Un administrateur doit pouvoir créer, lire, modifier et supprimer un événement.
 - Un administrateur doit pouvoir créer, lire, modifier et supprimer un commentaire sur un événement.
 - Un collaborateur doit pouvoir consulter la liste des événements.
-- Un collaborateur doit pouvoir créer, lire, modifier et supprimer ses propres commentaires sur un événement.
-- Chaque événement doit comporter un intitulé, une date, une description et un auteur.
-- Chaque commentaire doit comporter un auteur, un texte et une date.
+- Un collaborateur doit pouvoir créer et lire un événement.
+- un collaborateur doit pouvoir modifier et supprimer ses propres commentaires sur un événement.
+- Chaque événement doit comporter un intitulé, une description, une date de création et une date de modification.
+- Chaque commentaire doit comporter un auteur, un texte et une date de création et une date de modification.
 - Un événement peut recevoir plusieurs commentaires.
 
 ### Exigences non fonctionnelles (hors logique métier)
