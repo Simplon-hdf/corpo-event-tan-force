@@ -35,16 +35,17 @@
 
 - R26 : Un événement doit avoir un identifiant unique
 - R27 : Un événement doit avoir un intitulé
-- R28 : Un événement doit avoir une date de création
-- R29 : Un événement doit avoir une date de modification
-- R30 : Un événement doit avoir une description
-- R31 : Un événement peut avoir un ou des commentaires
-- R32 : Un événement peut avoir un ou des participants
+- R28 : Un événement doit avoir un lieu
+- R29 : Un événement doit avoir une description
+- R30 : Un événement doit avoir une date de création
+- R31 : Un événement doit avoir une date de modification
+- R32 : Un événement peut avoir un ou des commentaires
+- R33 : Un événement peut avoir un ou des participants
 
 ### Commentaires
 
-- R33 : Un commentaire doit avoir un identifiant unique
-- R34 : Un commentaire doit avoir un auteur
-- R35 : Un commentaire doit avoir un texte
-- R36 : Un commentaire doit avoir une date de création
-- R37 : Un commentaire doit avoir une date de modification
+- R34 : Un commentaire doit avoir un identifiant unique
+- R35 : Un commentaire doit avoir un auteur
+- R36 : Un commentaire doit avoir un texte
+- R37 : Un commentaire doit avoir une date de création
+- R38 : Un commentaire doit avoir une date de modification
