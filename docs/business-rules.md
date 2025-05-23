@@ -3,7 +3,7 @@
 ### Collaborateurs
 
 - R1 : Un collaborateur doit avoir un identifiant unique
-- R2 : Un collaborateur doit avoir une adresse mail
+- R2 : Un collaborateur doit avoir une adresse mail unique
 - R3 : Un collaborateur doit avoir un mot de passe
 - R4 : Un collaborateur doit avoir un nom
 - R5 : Un collaborateur doit avoir un prénom
@@ -17,7 +17,7 @@
 ### Administrateurs
 
 - R12 : Un administrateur doit avoir un identifiant unique
-- R13 : Un administrateur doit avoir une adresse mail
+- R13 : Un administrateur doit avoir une adresse mail unique 
 - R14 : Un administrateur doit avoir un mot de passe
 - R15 : Un administrateur doit avoir un nom
 - R16 : Un administrateur doit avoir un prénom
@@ -29,14 +29,14 @@
 - R22 : Un administrateur peut lire un commentaire
 - R23 : Un administrateur peut modifier un commentaire
 - R24 : Un administrateur peut supprimer un commentaire
-- R25 : Un administrateur peut ajouter un collaborateur à un événement
 
 ### Evenements
 
-- R26 : Un événement doit avoir un identifiant unique
-- R27 : Un événement doit avoir un intitulé
+- R25 : Un événement doit avoir un identifiant unique
+- R26 : Un événement doit avoir un titre
+- R27 : Un événement doit avoir une description
 - R28 : Un événement doit avoir un lieu
-- R29 : Un événement doit avoir une description
+- R29 : Un événement doit avoir un auteur
 - R30 : Un événement doit avoir une date de création
 - R31 : Un événement doit avoir une date de modification
 - R32 : Un événement peut avoir un ou des commentaires
