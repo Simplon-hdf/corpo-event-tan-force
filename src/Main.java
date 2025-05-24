@@ -2,50 +2,99 @@ import model.Event;
 import model.Event;
 import model.User;
 import model.Comment;
+import handler.EventHandler; // Ajout de l'import
+import handler.CommentHandler;
 import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
 
-        User user1 = new User(1, "Chaudard", "paul", "paul.chaudard@gmail.com", "secret");
-        User user2 = new User(2, "Pithivier", "gilbert", "gilbert.pithivie@gmail.com", "secret");
-        User user3 = new User(3, "Tassin", "maurice", "maurice.tassin@gmail.com", "secret");
+        // Création des handlers
+        EventHandler eventHandler = new EventHandler();
+        CommentHandler commentHandler = new CommentHandler();
 
-        user1.getRoles().add("ADMIN");
-        user2.getRoles().add("USER");
-        user3.getRoles().add("USER");
+        // Création de quelques utilisateurs
+        User admin = new User(1, "Chaudard", "paul", "paul.chaudard@gmail.com", "secret");
+        User employee1 = new User(2, "Pithivier", "gilbert", "gilbert.pithivie@gmail.com", "secret");
+        User employee2 = new User(3, "Tassin", "maurice", "maurice.tassin@gmail.com", "secret");
 
-        LocalDateTime maintenant = LocalDateTime.now();
-        Event evenement = new Event(1, "Séminaire Réseau Attila",
-                "Séminaire annuel du réseau pour discuter des objectifs",
-                "Forêt de Machecoul", user1, maintenant);
+        admin.getRoles().add("ADMIN");
+        employee1.getRoles().add("USER");
+        employee2.getRoles().add("USER");
 
-        evenement.addParticipant(user2);
-        evenement.addParticipant(user3);
+        // Création d'événements
+        Event teamBuilding = new Event(
+                1,
+                "Team Building Annuel Réseau Attila",
+                "Une journée pour renforcer la cohésion d'équipe",
+                "Forêt de Machecoul",
+                admin,
+                LocalDateTime.now().plusDays(15)
+        );
 
-        Comment commentaire1 = new Comment(1, "J'ai hâte d'y participer !", user2, maintenant);
-        Comment commentaire2 = new Comment(2, "Est-ce qu'il y aura un buffet ?", user3, maintenant);
 
-        evenement.addComment(commentaire1);
-        evenement.addComment(commentaire2);
+        Event formation = new Event(
+                2,
+                "Formation Faire sauter le pont",
+                "Formation sur les nouveautés et les  bonnes pratiques du fil rouge sur le bouton rouge",
+                "Salle de conférence - Chateau vieux",
+                employee1,
+                LocalDateTime.now().plusDays(7)
+        );
 
-        System.out.println("Événement : " + evenement.getTitle());
-        System.out.println("Description : " + evenement.getDescription());
-        System.out.println("Lieu : " + evenement.getLocation());
-        System.out.println("Créé par : " + evenement.getAuthor().getFirstName() + " " + evenement.getAuthor().getLastName());
-        System.out.println("Nombre de participants : " + evenement.getParticipants().size());
-        System.out.println("Nombre de commentaires : " + evenement.getComments().size());
+        // Ajout des événements via le handler
+        eventHandler.add(teamBuilding);
+        eventHandler.add(formation);
+        System.out.println("Nombre d'événements ajoutés : " + eventHandler.showAll().size());
 
-        // Afficher les participants
-        System.out.println("\nListe des participants :");
-        for (User participant : evenement.getParticipants()) {
-            System.out.println("- " + participant.getFirstName() + " " + participant.getLastName() + " (" + participant.getEmail() + ")");
+        // Annonce de participation aux événements
+        System.out.println("\n--- INSCRIPTIONS AUX ÉVÉNEMENTS ---");
+        teamBuilding.addParticipant(employee1);
+        teamBuilding.addParticipant(employee2);
+        formation.addParticipant(admin);
+        formation.addParticipant(employee2);
+
+        // Ajout de commentaires
+        Comment comment1 = new Comment(1, "J'ai hâte de participer à cet événement !", employee1, LocalDateTime.now());
+        Comment comment2 = new Comment(2, "Est-ce que le déjeuner sera fourni ?", employee2, LocalDateTime.now());
+        Comment comment3 = new Comment(3, "Je recommande d'apporter votre matériel.", admin, LocalDateTime.now());
+
+        // Ajout de commentaires aux événements
+        teamBuilding.addComment(comment1);
+        teamBuilding.addComment(comment2);
+        formation.addComment(comment3);
+
+        // Gestion des commentaires via le handler
+        commentHandler.add(comment1);
+        commentHandler.add(comment2);
+        commentHandler.add(comment3);
+
+        System.out.println("\n--- COMMENTAIRES ---");
+        System.out.println("Nombre total de commentaires : " + commentHandler.showAll().size());
+
+        // Affichage des événements avec leurs participants et commentaires
+        System.out.println("\n--- ÉVÉNEMENT : " + teamBuilding.getTitle() + " ---");
+        System.out.println("Description : " + teamBuilding.getDescription());
+        System.out.println("Lieu : " + teamBuilding.getLocation());
+        System.out.println("Date : " + teamBuilding.getCreatedAt()); // Correction ici : getDate() au lieu de getCreationDate()
+        System.out.println("Organisateur : " + teamBuilding.getAuthor().getFirstName() + " " + teamBuilding.getAuthor().getLastName());
+
+        System.out.println("\nParticipants :");
+        for (User participant : teamBuilding.getParticipants()) {
+            System.out.println("- " + participant.getFirstName() + " " + participant.getLastName());
         }
 
-        // Afficher les commentaires
         System.out.println("\nCommentaires :");
-        for (Comment commentaire : evenement.getComments()) {
-            System.out.println("- " + commentaire.getAuthor().getFirstName() + " " + commentaire.getAuthor().getLastName() + " : " + commentaire.getContent());
+        for (Comment comment : teamBuilding.getComments()) {
+            System.out.println("- " + comment.getAuthor().getFirstName() + " : " + comment.getContent());
         }
+
+        // Démonstration de mise à jour d'événement
+        System.out.println("\n--- MISE À JOUR D'UN ÉVÉNEMENT ---");
+        teamBuilding.setLocation("Parc d'activités de Paris");
+        eventHandler.update(teamBuilding);
+
+        Event updatedEvent = eventHandler.show(teamBuilding);
+        System.out.println("Nouveau lieu du Team Building : " + updatedEvent.getLocation());
     }
 }
