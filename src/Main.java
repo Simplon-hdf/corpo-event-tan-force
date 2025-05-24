@@ -74,7 +74,7 @@ public class Main {
         System.out.println("\n--- COMMENTAIRES ---");
         System.out.println("Nombre total de commentaires : " + commentHandler.showAll().size());
 
-        // Affichage des événements avec leurs participants et commentaires
+        // Affichage d'un événement avec ses participants ses commentaires
         System.out.println("\n--- ÉVÉNEMENT : " + teamBuilding.getTitle() + " ---");
         System.out.println("Description : " + teamBuilding.getDescription());
         System.out.println("Lieu : " + teamBuilding.getLocation());
@@ -92,7 +92,7 @@ public class Main {
             System.out.println("- " + comment.getAuthor().getFirstName() + " : " + comment.getContent());
         }
 
-        // Démonstration de mise à jour d'événement
+        // Mise à jour d'événement
         System.out.println("\n--- MISE À JOUR D'UN ÉVÉNEMENT ---");
         teamBuilding.setLocation("Salle de conférence - Chateau vieux");
         eventHandler.update(teamBuilding);
