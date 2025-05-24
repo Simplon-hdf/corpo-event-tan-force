@@ -5,6 +5,8 @@ import model.Comment;
 import handler.EventHandler; // Ajout de l'import
 import handler.CommentHandler;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class Main {
         EventHandler eventHandler = new EventHandler();
         CommentHandler commentHandler = new CommentHandler();
 
-        // Création de quelques utilisateurs
+        // Création des utilisateurs
         User admin = new User(1, "Chaudard", "paul", "paul.chaudard@gmail.com", "secret");
         User employee1 = new User(2, "Pithivier", "gilbert", "gilbert.pithivie@gmail.com", "secret");
         User employee2 = new User(3, "Tassin", "maurice", "maurice.tassin@gmail.com", "secret");
@@ -36,7 +38,7 @@ public class Main {
         Event formation = new Event(
                 2,
                 "Formation Faire sauter le pont",
-                "Formation sur les nouveautés et les  bonnes pratiques du fil rouge sur le bouton rouge",
+                "Formation sur les nouveautés et les bonnes pratiques du fil rouge sur le bouton rouge",
                 "Salle de conférence - Chateau vieux",
                 employee1,
                 LocalDateTime.now().plusDays(7)
@@ -76,7 +78,8 @@ public class Main {
         System.out.println("\n--- ÉVÉNEMENT : " + teamBuilding.getTitle() + " ---");
         System.out.println("Description : " + teamBuilding.getDescription());
         System.out.println("Lieu : " + teamBuilding.getLocation());
-        System.out.println("Date : " + teamBuilding.getCreatedAt()); // Correction ici : getDate() au lieu de getCreationDate()
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.FRANCE);
+        System.out.println("Date : " + teamBuilding.getCreatedAt().format(formatter));
         System.out.println("Organisateur : " + teamBuilding.getAuthor().getFirstName() + " " + teamBuilding.getAuthor().getLastName());
 
         System.out.println("\nParticipants :");
@@ -91,7 +94,7 @@ public class Main {
 
         // Démonstration de mise à jour d'événement
         System.out.println("\n--- MISE À JOUR D'UN ÉVÉNEMENT ---");
-        teamBuilding.setLocation("Parc d'activités de Paris");
+        teamBuilding.setLocation("Salle de conférence - Chateau vieux");
         eventHandler.update(teamBuilding);
 
         Event updatedEvent = eventHandler.show(teamBuilding);
