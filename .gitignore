@@ -1,1 +1,17 @@
+# Fichiers système macOS
 .DS_Store
+
+# Dossiers et fichiers IntelliJ IDEA
+.idea
+*.iml
+*.iws
+*.ipr
+out/
+
+# Fichiers compilés Java
+*.class
+
+# Dossiers de compilation
+/out/
+/target/
+/build/
