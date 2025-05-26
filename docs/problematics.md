@@ -1,0 +1,6 @@
+## Problématiques
+
+| Problématiques                                              | Problèmes                                                                                  | Solutions                                                                                   |
+|-------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Difficulté à informer tous les collaborateurs               | Les collaborateurs sont répartis sur de nombreux sites et ne lisent pas tous leurs emails   | Mettre en place une plateforme centralisée de partage d’événements                          |
+| Manque d’engagement autour des événements                   | Faible participation ou manque de visibilité sur les événements organisés                   | Permettre aux collaborateurs de consulter et commenter des événements              |
